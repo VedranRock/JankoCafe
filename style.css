@@ -1,3 +1,4 @@
+/* Base styles */
 body {
   font-family: Arial, sans-serif;
   margin: 2em;
@@ -43,6 +44,7 @@ li {
   margin: 0.5em 0;
 }
 
+/* Icon styles */
 .icon {
   display: inline-block;
   font-size: 1em;
@@ -89,6 +91,7 @@ li {
   font-weight: bold;
 }
 
+/* Dark mode */
 .toggle-btn {
   position: fixed;
   top: 1em;
@@ -124,7 +127,7 @@ body.dark-mode .toggle-btn {
   color: #f0f0f0;
 }
 
-/* Admin form styling */
+/* Admin login and form */
 #adminLogin, #addItemForm {
   margin-top: 1em;
   padding: 1em;
@@ -138,6 +141,7 @@ input, select, button {
   margin: 0.5em 0;
   padding: 0.5em;
   width: 100%;
+  font-size: 1em;
 }
 
 label {

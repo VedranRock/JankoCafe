@@ -1,9 +1,7 @@
-// 🌙 Dark Mode Toggle
 function toggleDarkMode() {
   document.body.classList.toggle("dark-mode");
 }
 
-// 🔐 Admin Login
 document.getElementById("adminToggle").addEventListener("click", () => {
   document.getElementById("adminLogin").style.display = "block";
 });
@@ -18,7 +16,6 @@ document.getElementById("adminLoginBtn").addEventListener("click", () => {
   }
 });
 
-// ➕ Add New Menu Item
 document.getElementById("addItemBtn").addEventListener("click", () => {
   const name = document.getElementById("itemName").value.trim();
   const category = document.getElementById("itemCategory").value;
@@ -39,11 +36,8 @@ document.getElementById("addItemBtn").addEventListener("click", () => {
 
   const li = document.createElement("li");
   li.innerHTML = `${name} ${icons}`;
+  document.getElementById(category).appendChild(li);
 
-  const list = document.getElementById(category);
-  list.appendChild(li);
-
-  // Reset form
   document.getElementById("itemName").value = "";
   iconCheckboxes.forEach(cb => cb.checked = false);
 });
