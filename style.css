@@ -162,3 +162,28 @@ body.dark-mode button {
   color: #f0f0f0;
   border: 1px solid #666;
 }
+.top-buttons {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  display: flex;
+  gap: 0.5em;
+  z-index: 1000;
+}
+
+.toggle-btn,
+.admin-btn {
+  background: #eee;
+  color: #333;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+body.dark-mode .toggle-btn,
+body.dark-mode .admin-btn {
+  background: #444;
+  color: #f0f0f0;
+}

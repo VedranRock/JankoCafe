@@ -6,8 +6,10 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
-  <button id="adminToggle">🔐 Admin Login</button>
+  <div class="top-buttons">
+    <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    <button class="admin-btn" id="adminToggle">🔐 Admin Login</button>
+  </div>  
 
   <div id="adminLogin" style="display: none;">
     <input type="password" id="adminPassword" placeholder="Enter admin password">
