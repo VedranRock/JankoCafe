@@ -171,6 +171,15 @@ body.dark-mode button {
   z-index: 1000;
 }
 
+.top-buttons {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  display: flex;
+  gap: 0.5em;
+  z-index: 1000;
+}
+
 .toggle-btn,
 .admin-btn {
   background: #eee;
@@ -180,6 +189,7 @@ body.dark-mode button {
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  white-space: nowrap;
 }
 
 body.dark-mode .toggle-btn,
