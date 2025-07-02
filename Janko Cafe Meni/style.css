@@ -1,0 +1,127 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 2em;
+    background-color: #fdfdfd;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #6b4c3b;
+  }
+  
+  .menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+  }
+  
+  .menu-section {
+    flex: 1 1 300px;
+    min-width: 280px;
+  }
+  
+  @media (max-width: 768px) {
+    .menu-container {
+      flex-direction: column;
+    }
+  }
+  
+  h2 {
+    color: #8b5e3c;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.3em;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  li {
+    margin: 0.5em 0;
+  }
+  
+  .icon {
+    display: inline-block;
+    font-size: 1em;
+    margin-left: 0.3em;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .icon::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 0;
+    top: 1.5em;
+    background: #fff8dc;
+    color: #000;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    white-space: nowrap;
+    z-index: 10;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+  }
+  
+  .icon:hover::after,
+  .icon:focus::after {
+    opacity: 1;
+  }
+  
+  .green-star {
+    color: darkgreen;
+    font-weight: bold;
+  }
+  
+  .blue-plus {
+    color: darkblue;
+    font-weight: bold;
+  }
+  
+  .red-clock {
+    color: darkred;
+    font-weight: bold;
+  }
+  
+  /* 🌙 Dark Mode */
+  body.dark-mode {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+  }
+  
+  body.dark-mode h1,
+  body.dark-mode h2 {
+    color: #f4d58d;
+  }
+  
+  body.dark-mode .icon::after {
+    background: #333;
+    color: #f0f0f0;
+    border-color: #555;
+  }
+  
+  .toggle-btn {
+    position: fixed;
+    top: 1em;
+    right: 1em;
+    background: #eee;
+    color: #333;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 1000;
+  }
+  
+  body.dark-mode .toggle-btn {
+    background: #444;
+    color: #f0f0f0;
+  }
+  
