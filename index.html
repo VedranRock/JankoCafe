@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
   <button id="adminToggle">🔐 Admin Login</button>
 
   <div id="adminLogin" style="display: none;">
@@ -19,8 +20,8 @@
 
     <label for="itemCategory">Kategorija:</label>
     <select id="itemCategory">
-      <option value="Hrana">Hrana</option>
-      <option value="Pica">Pića</option>
+      <option value="hranaList">Hrana</option>
+      <option value="picaList">Pića</option>
     </select>
 
     <label>Ikonice:</label>
@@ -31,30 +32,73 @@
     <button id="addItemBtn">Dodaj</button>
   </div>
 
+  <h1>Janko Cafe Meni</h1>
+
   <div class="menu-container">
-    <div class="menu-section" id="hranaSection">
+    <div class="menu-section">
       <h2>Hrana</h2>
       <ul id="hranaList">
         <li>Classic Đoko
-          <span class="icon green-star" title="Pitajte konobara">★</span>
-          <span class="icon blue-plus" title="Druge opcije moguće">+</span>
+          <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span>
+          <span class="icon blue-plus" data-tooltip="Druge opcije ili kombinacije moguće.">+</span>
+        </li>
+        <li>Jaja na oko</li>
+        <li>Kuvana jaja</li>
+        <li>Sendviči (sir, šunka, kobasice, puter, losos, džem, kiselomleko)
+          <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span>
+          <span class="icon blue-plus" data-tooltip="Druge opcije ili kombinacije moguće.">+</span>
+        </li>
+        <li>Voće: Banane, Jabuke, Breskve, Kajsije, Nektarine, Dinja, Lubenica
+          <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span>
+          <span class="icon blue-plus" data-tooltip="Druge opcije ili kombinacije moguće.">+</span>
         </li>
         <li>Voćna salata</li>
+        <li>Palačinke</li>
+        <li>Prženice</li>
         <li>Kroasan
-          <span class="icon green-star" title="Pitajte konobara">★</span>
-          <span class="icon red-clock" title="Čekanje više od 15 minuta">⏰</span>
+          <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span>
+          <span class="icon red-clock" data-tooltip="Čekanje više od 15 minuta.">⏰</span>
+        </li>
+        <li>Pan čokolat
+          <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span>
+          <span class="icon red-clock" data-tooltip="Čekanje više od 15 minuta.">⏰</span>
+        </li>
+        <li>Tiropita
+          <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span>
+          <span class="icon red-clock" data-tooltip="Čekanje više od 15 minuta.">⏰</span>
+        </li>
+        <li>Spanakopita
+          <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span>
+          <span class="icon red-clock" data-tooltip="Čekanje više od 15 minuta.">⏰</span>
+        </li>
+        <li>Rol viršlice
+          <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span>
+          <span class="icon red-clock" data-tooltip="Čekanje više od 15 minuta.">⏰</span>
         </li>
       </ul>
     </div>
 
-    <div class="menu-section" id="picaSection">
+    <div class="menu-section">
       <h2>Pića</h2>
       <ul id="picaList">
         <li>Kafa Single Espresso (40ml)
-          <span class="icon blue-plus" title="Druge opcije moguće">+</span>
+          <span class="icon blue-plus" data-tooltip="Druge opcije ili kombinacije moguće.">+</span>
         </li>
+        <li>Kafa Dupli Espresso (80ml)
+          <span class="icon blue-plus" data-tooltip="Druge opcije ili kombinacije moguće.">+</span>
+        </li>
+        <li>Sveži sok od narandže</li>
         <li>Limunada sa ledom</li>
-        <li>Čaj od nane</li>
+        <li>Čajevi:
+          <ul>
+            <li>Crni čaj</li>
+            <li>Sivi čaj <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span></li>
+            <li>Crveni čaj <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span></li>
+            <li>Čaj od nane</li>
+            <li>Čaj od kamilice</li>
+            <li>Hibiskus</li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
