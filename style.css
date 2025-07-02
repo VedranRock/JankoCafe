@@ -184,3 +184,25 @@ body.dark-mode button {
   color: #f0f0f0;
   border: 1px solid #666;
 }
+
+.close-btn {
+  float: right;
+  background: transparent;
+  border: none;
+  font-size: 1.2em;
+  color: #888;
+  cursor: pointer;
+  margin-bottom: 0.5em;
+}
+
+.close-btn:hover {
+  color: #000;
+}
+
+body.dark-mode .close-btn {
+  color: #ccc;
+}
+
+body.dark-mode .close-btn:hover {
+  color: #fff;
+}

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="sr">
+
 <head>
   <meta charset="UTF-8">
   <title>Janko Cafe Meni</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="top-buttons">
     <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
@@ -12,11 +14,13 @@
   </div>
 
   <div id="adminLogin" style="display: none;">
+    <button class="close-btn" onclick="closeAdminLogin()">×</button>
     <input type="password" id="adminPassword" placeholder="Enter admin password">
     <button id="adminLoginBtn">Login</button>
   </div>
 
   <div id="addItemForm" style="display: none;">
+    <button class="close-btn" onclick="closeAddForm()">×</button>
     <h3>Dodaj novi artikal</h3>
     <input type="text" id="itemName" placeholder="Naziv artikla" required>
 
@@ -40,34 +44,54 @@
     <div class="menu-section">
       <h2>Hrana</h2>
       <ul id="hranaList">
-        <li>Classic Đoko <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span> <span class="icon blue-plus" data-tooltip="Druge opcije ili kombinacije moguće.">+</span></li>
+        <li>Classic Đoko <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span>
+          <span class="icon blue-plus" data-tooltip="Druge opcije ili kombinacije moguće.">+</span>
+        </li>
         <li>Jaja na oko</li>
         <li>Kuvana jaja</li>
-        <li>Sendviči (sir, šunka, kobasice, puter, losos, džem, kiselomleko) <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span> <span class="icon blue-plus" data-tooltip="Druge opcije ili kombinacije moguće.">+</span></li>
-        <li>Voće: Banane, Jabuke, Breskve, Kajsije, Nektarine, Dinja, Lubenica <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span> <span class="icon blue-plus" data-tooltip="Druge opcije ili kombinacije moguće.">+</span></li>
+        <li>Sendviči (sir, šunka, kobasice, puter, losos, džem, kiselomleko) <span class="icon green-star"
+            data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span> <span class="icon blue-plus"
+            data-tooltip="Druge opcije ili kombinacije moguće.">+</span></li>
+        <li>Voće: Banane, Jabuke, Breskve, Kajsije, Nektarine, Dinja, Lubenica <span class="icon green-star"
+            data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span> <span class="icon blue-plus"
+            data-tooltip="Druge opcije ili kombinacije moguće.">+</span></li>
         <li>Voćna salata</li>
         <li>Palačinke</li>
         <li>Prženice</li>
-        <li>Kroasan <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span> <span class="icon red-clock" data-tooltip="Čekanje više od 15 minuta.">⏰</span></li>
-        <li>Pan čokolat <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span> <span class="icon red-clock" data-tooltip="Čekanje više od 15 minuta.">⏰</span></li>
-        <li>Tiropita <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span> <span class="icon red-clock" data-tooltip="Čekanje više od 15 minuta.">⏰</span></li>
-        <li>Spanakopita <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span> <span class="icon red-clock" data-tooltip="Čekanje više od 15 minuta.">⏰</span></li>
-        <li>Rol viršlice <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span> <span class="icon red-clock" data-tooltip="Čekanje više od 15 minuta.">⏰</span></li>
+        <li>Kroasan <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span>
+          <span class="icon red-clock" data-tooltip="Čekanje više od 15 minuta.">⏰</span>
+        </li>
+        <li>Pan čokolat <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span>
+          <span class="icon red-clock" data-tooltip="Čekanje više od 15 minuta.">⏰</span>
+        </li>
+        <li>Tiropita <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span>
+          <span class="icon red-clock" data-tooltip="Čekanje više od 15 minuta.">⏰</span>
+        </li>
+        <li>Spanakopita <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span>
+          <span class="icon red-clock" data-tooltip="Čekanje više od 15 minuta.">⏰</span>
+        </li>
+        <li>Rol viršlice <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span>
+          <span class="icon red-clock" data-tooltip="Čekanje više od 15 minuta.">⏰</span>
+        </li>
       </ul>
     </div>
 
     <div class="menu-section">
       <h2>Pića</h2>
       <ul id="picaList">
-        <li>Kafa Single Espresso (40ml) <span class="icon blue-plus" data-tooltip="Druge opcije ili kombinacije moguće.">+</span></li>
-        <li>Kafa Dupli Espresso (80ml) <span class="icon blue-plus" data-tooltip="Druge opcije ili kombinacije moguće.">+</span></li>
+        <li>Kafa Single Espresso (40ml) <span class="icon blue-plus"
+            data-tooltip="Druge opcije ili kombinacije moguće.">+</span></li>
+        <li>Kafa Dupli Espresso (80ml) <span class="icon blue-plus"
+            data-tooltip="Druge opcije ili kombinacije moguće.">+</span></li>
         <li>Sveži sok od narandže</li>
         <li>Limunada sa ledom</li>
         <li>Čajevi:
           <ul>
             <li>Crni čaj</li>
-            <li>Sivi čaj <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span></li>
-            <li>Crveni čaj <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span></li>
+            <li>Sivi čaj <span class="icon green-star" data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span>
+            </li>
+            <li>Crveni čaj <span class="icon green-star"
+                data-tooltip="Pitajte konobara za dostupne kombinacije.">★</span></li>
             <li>Čaj od nane</li>
             <li>Čaj od kamilice</li>
             <li>Hibiskus</li>
@@ -79,4 +103,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>

@@ -41,3 +41,11 @@ document.getElementById("addItemBtn").addEventListener("click", () => {
   document.getElementById("itemName").value = "";
   iconCheckboxes.forEach(cb => cb.checked = false);
 });
+
+function closeAdminLogin() {
+  document.getElementById("adminLogin").style.display = "none";
+}
+
+function closeAddForm() {
+  document.getElementById("addItemForm").style.display = "none";
+}
