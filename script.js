@@ -2,12 +2,10 @@ function toggleDarkMode() {
   document.body.classList.toggle("dark-mode");
 }
 
-// Close buttons
 function closeAdminLogin() {
   document.getElementById("adminLogin").style.display = "none";
 }
 
-// Admin login
 document.getElementById("adminToggle").addEventListener("click", () => {
   document.getElementById("adminLogin").style.display = "block";
 });
@@ -22,7 +20,6 @@ document.getElementById("adminLoginBtn").addEventListener("click", () => {
   }
 });
 
-// Receipt builder
 document.getElementById("receiptBuilderBtn").addEventListener("click", () => {
   document.getElementById("receiptBuilder").style.display = "block";
   generateReceiptForm();
@@ -51,12 +48,25 @@ async function downloadReceipt() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  doc.setFontSize(16);
-  doc.text("Račun", 10, 15);
-  doc.setFontSize(12);
+  // Use a font that supports Serbian characters
+  doc.setFont("Helvetica", "normal");
 
+  // Header
+  const today = new Date();
+  const dateStr = today.toLocaleDateString("sr-RS");
+  const dayStr = today.toLocaleDateString("sr-RS", { weekday: "long" });
+
+  doc.setFontSize(16);
+  doc.text("Kafić Janko – Račun", 10, 15);
+
+  doc.setFontSize(12);
+  doc.text(`Datum: ${dateStr}`, 10, 25);
+  doc.text(`Dan: ${dayStr}`, 10, 32);
+  doc.text(`Konobar: ____________________`, 10, 39);
+
+  // Items
+  let y = 50;
   const items = document.querySelectorAll(".receipt-item");
-  let y = 25;
 
   items.forEach((item, i) => {
     const checkbox = item.querySelector("input[type='checkbox']");
@@ -73,6 +83,11 @@ async function downloadReceipt() {
       }
     }
   });
+
+  // Footer
+  y += 10;
+  doc.setFontSize(12);
+  doc.text("Hvala na poseti! Vidimo se uskoro. ☕", 10, y);
 
   doc.save("racun.pdf");
 }
