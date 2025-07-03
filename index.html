@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Janko Cafe Meni</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
   <div class="top-buttons">
@@ -17,23 +18,12 @@
     <button id="adminLoginBtn">Login</button>
   </div>
 
-  <div id="addItemForm" style="display: none;">
-    <button class="close-btn" onclick="closeAddForm()">×</button>
-    <h3>Dodaj novi artikal</h3>
-    <input type="text" id="itemName" placeholder="Naziv artikla" required>
+  <button id="receiptBuilderBtn" style="display: none;">🧾 Open Receipt Builder</button>
 
-    <label for="itemCategory">Kategorija:</label>
-    <select id="itemCategory">
-      <option value="hranaList">Hrana</option>
-      <option value="picaList">Pića</option>
-    </select>
-
-    <label>Ikonice:</label>
-    <label><input type="checkbox" value="green-star"> Zvezda ★</label>
-    <label><input type="checkbox" value="blue-plus"> Plus +</label>
-    <label><input type="checkbox" value="red-clock"> Sat ⏰</label>
-
-    <button id="addItemBtn">Dodaj</button>
+  <div id="receiptBuilder" style="display: none;">
+    <h2>Kreiraj Račun</h2>
+    <div id="receiptItems"></div>
+    <button onclick="downloadReceipt()">📥 Download PDF</button>
   </div>
 
   <h1>Janko Cafe Meni</h1>

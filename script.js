@@ -2,6 +2,12 @@ function toggleDarkMode() {
   document.body.classList.toggle("dark-mode");
 }
 
+// Close buttons
+function closeAdminLogin() {
+  document.getElementById("adminLogin").style.display = "none";
+}
+
+// Admin login
 document.getElementById("adminToggle").addEventListener("click", () => {
   document.getElementById("adminLogin").style.display = "block";
 });
@@ -9,43 +15,64 @@ document.getElementById("adminToggle").addEventListener("click", () => {
 document.getElementById("adminLoginBtn").addEventListener("click", () => {
   const password = document.getElementById("adminPassword").value;
   if (password === "admin123") {
-    document.getElementById("addItemForm").style.display = "block";
     document.getElementById("adminLogin").style.display = "none";
+    document.getElementById("receiptBuilderBtn").style.display = "inline-block";
   } else {
     alert("Pogrešna lozinka.");
   }
 });
 
-document.getElementById("addItemBtn").addEventListener("click", () => {
-  const name = document.getElementById("itemName").value.trim();
-  const category = document.getElementById("itemCategory").value;
-  const iconCheckboxes = document.querySelectorAll("#addItemForm input[type='checkbox']");
-
-  if (!name) {
-    alert("Unesite naziv artikla.");
-    return;
-  }
-
-  const icons = Array.from(iconCheckboxes)
-    .filter(cb => cb.checked)
-    .map(cb => {
-      if (cb.value === "green-star") return `<span class="icon green-star" data-tooltip="Pitajte konobara">★</span>`;
-      if (cb.value === "blue-plus") return `<span class="icon blue-plus" data-tooltip="Druge opcije moguće">+</span>`;
-      if (cb.value === "red-clock") return `<span class="icon red-clock" data-tooltip="Čekanje više od 15 minuta">⏰</span>`;
-    }).join(" ");
-
-  const li = document.createElement("li");
-  li.innerHTML = `${name} ${icons}`;
-  document.getElementById(category).appendChild(li);
-
-  document.getElementById("itemName").value = "";
-  iconCheckboxes.forEach(cb => cb.checked = false);
+// Receipt builder
+document.getElementById("receiptBuilderBtn").addEventListener("click", () => {
+  document.getElementById("receiptBuilder").style.display = "block";
+  generateReceiptForm();
 });
 
-function closeAdminLogin() {
-  document.getElementById("adminLogin").style.display = "none";
+function generateReceiptForm() {
+  const allItems = [...document.querySelectorAll("#hranaList li, #picaList li")];
+  const container = document.getElementById("receiptItems");
+  container.innerHTML = "";
+
+  allItems.forEach((li, index) => {
+    const itemName = li.childNodes[0].textContent.trim();
+    const div = document.createElement("div");
+    div.className = "receipt-item";
+
+    div.innerHTML = `
+      <label><input type="checkbox" data-name="${itemName}" id="item-${index}"> ${itemName}</label>
+      <textarea placeholder="Napomena (opciono)" id="note-${index}"></textarea>
+    `;
+
+    container.appendChild(div);
+  });
 }
 
-function closeAddForm() {
-  document.getElementById("addItemForm").style.display = "none";
+async function downloadReceipt() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.setFontSize(16);
+  doc.text("Račun", 10, 15);
+  doc.setFontSize(12);
+
+  const items = document.querySelectorAll(".receipt-item");
+  let y = 25;
+
+  items.forEach((item, i) => {
+    const checkbox = item.querySelector("input[type='checkbox']");
+    const note = item.querySelector("textarea").value.trim();
+
+    if (checkbox.checked) {
+      doc.text(`• ${checkbox.dataset.name}`, 10, y);
+      y += 7;
+      if (note) {
+        doc.setFontSize(11);
+        doc.text(`  Napomena: ${note}`, 12, y);
+        doc.setFontSize(12);
+        y += 7;
+      }
+    }
+  });
+
+  doc.save("racun.pdf");
 }
