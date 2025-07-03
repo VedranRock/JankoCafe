@@ -90,5 +90,5 @@ async function downloadReceipt() {
   doc.text("Hvala na poseti!", 10, y);
   y += 7; // move down for the next line
   doc.text("Vidimo se uskoro.", 10, y);
-  doc.save(dateStr + ".pdf");
+  doc.save(dateStr + "pdf");
 }
