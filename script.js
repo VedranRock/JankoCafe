@@ -57,12 +57,12 @@ async function downloadReceipt() {
   const dayStr = today.toLocaleDateString("sr-RS", { weekday: "long" });
 
   doc.setFontSize(16);
-  doc.text("Kafić Janko – Račun", 10, 15);
+  doc.text("Janko Cafe - Račun", 10, 15);
 
   doc.setFontSize(12);
   doc.text(`Datum: ${dateStr}`, 10, 25);
   doc.text(`Dan: ${dayStr}`, 10, 32);
-  doc.text(`Konobar: ____________________`, 10, 39);
+  doc.text(`Konobar: Markovic Janko`, 10, 39);
 
   // Items
   let y = 50;
@@ -87,7 +87,8 @@ async function downloadReceipt() {
   // Footer
   y += 10;
   doc.setFontSize(12);
-  doc.text("Hvala na poseti! Vidimo se uskoro. ☕", 10, y);
-
-  doc.save("racun.pdf");
+  doc.text("Hvala na poseti!", 10, y);
+  y += 7; // move down for the next line
+  doc.text("Vidimo se uskoro.", 10, y);
+  doc.save(dateStr + ".pdf");
 }
