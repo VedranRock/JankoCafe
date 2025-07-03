@@ -55,9 +55,9 @@ async function downloadReceipt() {
   const today = new Date();
   const dateStr = today.toLocaleDateString("sr-RS");
   const dayStr = today.toLocaleDateString("sr-RS", { weekday: "long" });
-
+  
   doc.setFontSize(16);
-  doc.text("Janko Cafe - Račun", 10, 15);
+  doc.text("Janko Cafe - Racun", 10, 15);
 
   doc.setFontSize(12);
   doc.text(`Datum: ${dateStr}`, 10, 25);
