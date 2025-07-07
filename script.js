@@ -44,6 +44,10 @@ function generateReceiptForm() {
   });
 }
 
+function stripAccents(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
 async function downloadReceipt() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
@@ -52,7 +56,7 @@ async function downloadReceipt() {
 
   const today = new Date();
   const dateStr = today.toLocaleDateString("sr-RS");
-  const dayStr = today.toLocaleDateString("sr-RS", { weekday: "long" });
+  const dayStr = stripAccents(today.toLocaleDateString("sr-RS", { weekday: "long" }));
 
   const konobar = document.getElementById("konobarSelect").value || "____________________";
 
@@ -62,7 +66,7 @@ async function downloadReceipt() {
   }
 
   doc.setFontSize(16);
-  doc.text("Janko Cafe – Račun", 10, 15);
+  doc.text("Janko Cafe – Racun", 10, 15);
 
   doc.setFontSize(12);
   doc.text(`Datum: ${dateStr}`, 10, 25);
