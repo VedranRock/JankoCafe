@@ -129,6 +129,7 @@ li {
 }
 
 input,
+select,
 button {
   display: block;
   margin: 0.5em 0;
@@ -190,6 +191,10 @@ button:hover {
   margin-top: 0;
 }
 
+#konobarSelect {
+  margin-bottom: 1em;
+}
+
 .receipt-item {
   margin-bottom: 1em;
   padding: 0.5em;
@@ -244,6 +249,7 @@ body.dark-mode #receiptBuilder {
 }
 
 body.dark-mode input,
+body.dark-mode select,
 body.dark-mode textarea,
 body.dark-mode button {
   background: #444;

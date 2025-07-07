@@ -48,23 +48,27 @@ async function downloadReceipt() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  // Use a font that supports Serbian characters
   doc.setFont("Helvetica", "normal");
 
-  // Header
   const today = new Date();
   const dateStr = today.toLocaleDateString("sr-RS");
   const dayStr = today.toLocaleDateString("sr-RS", { weekday: "long" });
-  
+
+  const konobar = document.getElementById("konobarSelect").value || "____________________";
+
+  if (konobar === "____________________") {
+    alert("Molimo izaberite konobara pre preuzimanja računa.");
+    return;
+  }
+
   doc.setFontSize(16);
-  doc.text("Janko Cafe - Racun", 10, 15);
+  doc.text("Janko Cafe – Račun", 10, 15);
 
   doc.setFontSize(12);
   doc.text(`Datum: ${dateStr}`, 10, 25);
   doc.text(`Dan: ${dayStr}`, 10, 32);
-  doc.text(`Konobar: Markovic Janko`, 10, 39);
+  doc.text(`Konobar: ${konobar}`, 10, 39);
 
-  // Items
   let y = 50;
   const items = document.querySelectorAll(".receipt-item");
 
@@ -84,11 +88,11 @@ async function downloadReceipt() {
     }
   });
 
-  // Footer
   y += 10;
   doc.setFontSize(12);
   doc.text("Hvala na poseti!", 10, y);
-  y += 7; // move down for the next line
+  y += 7;
   doc.text("Vidimo se uskoro.", 10, y);
-  doc.save(dateStr + "pdf");
+
+  doc.save(`Racun_${dateStr}.pdf`);
 }

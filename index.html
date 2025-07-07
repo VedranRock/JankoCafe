@@ -14,16 +14,24 @@
 
   <div id="adminLogin" style="display: none;">
     <button class="close-btn" onclick="closeAdminLogin()">×</button>
-    <input type="password" id="adminPassword" placeholder="Enter admin password">
+    <input type="password" id="adminPassword" placeholder="Unesite lozinku">
     <button id="adminLoginBtn">Login</button>
   </div>
 
-  <button id="receiptBuilderBtn" style="display: none;">🧾 Open Receipt Builder</button>
+  <button id="receiptBuilderBtn" style="display: none;">🧾 Otvori Račun</button>
 
   <div id="receiptBuilder" style="display: none;">
     <h2>Kreiraj Račun</h2>
+    <label for="konobarSelect"><strong>Izaberite konobara:</strong></label>
+    <select id="konobarSelect">
+      <option value="">-- Izaberite --</option>
+      <option value="Milan">Milan</option>
+      <option value="Ana">Ana</option>
+      <option value="Jovana">Jovana</option>
+      <option value="Nikola">Nikola</option>
+    </select>
     <div id="receiptItems"></div>
-    <button onclick="downloadReceipt()">📥 Download PDF</button>
+    <button onclick="downloadReceipt()">📥 Preuzmi PDF</button>
   </div>
 
   <h1>Janko Cafe Meni</h1>
