@@ -56,7 +56,6 @@ async function downloadReceipt() {
 
   const today = new Date();
   const dateStr = today.toLocaleDateString("sr-RS");
-  const dayStr = stripAccents(today.toLocaleDateString("sr-RS", { weekday: "long" }));
 
   const konobar = document.getElementById("konobarSelect").value || "____________________";
 
@@ -70,7 +69,6 @@ async function downloadReceipt() {
 
   doc.setFontSize(12);
   doc.text(`Datum: ${dateStr}`, 10, 25);
-  doc.text(`Dan: ${dayStr}`, 10, 32);
   doc.text(`Konobar: ${konobar}`, 10, 39);
 
   let y = 50;
