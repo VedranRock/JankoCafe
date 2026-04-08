@@ -1,29 +1,50 @@
-// Menu items from PDF
-const menu = [
+// Drinks
+const drinks = [
     { name: "Voda čaša", price: 10 },
-    { name: "Bajadere (2)", price: 20 },
     { name: "Kafa šolja", price: 20 },
-    { name: "Bitter Lemon limenka", price: 50 },
-    { name: "Ceđeni Sok čaša", price: 30 },
     { name: "Kafa dupla šolja", price: 50 },
+    { name: "Čaj (šolja)", price: 40 },
+    { name: "Ceđeni Sok čaša", price: 30 },
+    { name: "Jogurt (šolja)", price: 40 },
+    { name: "Bitter Lemon limenka", price: 50 },
+    { name: "Pivo limenka", price: 80 }
+];
+
+// Food
+const food = [
+    { name: "Bajadere (2)", price: 20 },
     { name: "Kokice čaša", price: 20 },
     { name: "Kilice (3)", price: 50 },
     { name: "Bananice (2)", price: 30 },
     { name: "Tortica (1)", price: 20 },
-    { name: "Pivo limenka", price: 80 },
     { name: "Keks (5)", price: 20 },
     { name: "Minjoni (2)", price: 20 },
-    { name: "Grickalice Mix čaša", price: 10 }
+    { name: "Grickalice Mix čaša", price: 10 },
+    { name: "Sendvič", price: 80 },
+    { name: "Kuvano Jaje (1)", price: 50 },
+    { name: "Jaje na oko (1)", price: 50 },
+    { name: "Kajgana (1)", price: 50 },
+    { name: "Kačamak (Porcija)", price: 100 }
 ];
 
 let currentTable = null;
 const orders = {};
 
+// Table names mapping
+const tableNames = {
+    1: "Nada",
+    2: "Jelena",
+    3: "Milan",
+    4: "Vedran",
+    5: "Janko"
+};
+
 // DOM references
 const tableGrid = document.querySelector(".table-grid");
 const tablesPage = document.getElementById("tables-page");
 const menuPage = document.getElementById("menu-page");
-const menuGrid = document.getElementById("menu-items");
+const drinksGrid = document.getElementById("menu-drinks");
+const foodGrid = document.getElementById("menu-food");
 const orderList = document.getElementById("order-list");
 const totalDisplay = document.getElementById("total");
 const tableTitle = document.getElementById("table-title");
@@ -32,29 +53,36 @@ const tableTitle = document.getElementById("table-title");
 for (let i = 1; i <= 10; i++) {
     const btn = document.createElement("button");
     btn.id = `table-${i}`;
-    btn.textContent = `Sto ${i}\nUkupno: 0€`;
-    btn.style.whiteSpace = "pre-line"; // allow line break
+    btn.style.whiteSpace = "pre-line";
+    const name = tableNames[i] || `Sto ${i}`;
+    btn.textContent = `${name}\nUkupno: 0€`;
     btn.addEventListener("click", () => selectTable(i));
     tableGrid.appendChild(btn);
 }
 
-// Generate menu
-menu.forEach(item => {
-    const div = document.createElement("div");
-    div.className = "menu-item";
-    div.innerHTML = `<strong>${item.name}</strong><span>${item.price}€</span>`;
-    const btn = document.createElement("button");
-    btn.textContent = "Dodaj";
-    btn.addEventListener("click", () => addItem(item));
-    div.appendChild(btn);
-    menuGrid.appendChild(div);
-});
+// Generate menu sections
+function generateMenu(items, container) {
+    items.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "menu-item";
+        div.innerHTML = `<strong>${item.name}</strong><span>${item.price}€</span>`;
+        const btn = document.createElement("button");
+        btn.textContent = "Dodaj";
+        btn.addEventListener("click", () => addItem(item));
+        div.appendChild(btn);
+        container.appendChild(div);
+    });
+}
+
+generateMenu(drinks, drinksGrid);
+generateMenu(food, foodGrid);
 
 // Select table
 function selectTable(num) {
     currentTable = num;
     if (!orders[num]) orders[num] = [];
-    tableTitle.textContent = `Sto ${num}`;
+    const name = tableNames[num] || `Sto ${num}`;
+    tableTitle.textContent = name;
     tablesPage.classList.add("hidden");
     menuPage.classList.remove("hidden");
     renderOrder();
@@ -103,7 +131,8 @@ function renderOrder() {
 function updateTableButton(tableNum, total) {
     const btn = document.getElementById(`table-${tableNum}`);
     if (btn) {
-        btn.textContent = `Sto ${tableNum}\nUkupno: ${total}€`;
+        const name = tableNames[tableNum] || `Sto ${tableNum}`;
+        btn.textContent = `${name}\nUkupno: ${total}€`;
     }
 }
 
