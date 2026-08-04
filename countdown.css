@@ -1,0 +1,97 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.parent {
+    font-family: 'Segoe UI', sans-serif;
+    border: 1px solid rgb(245, 240, 230);
+    text-align: center;
+    vertical-align: middle;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.childGeneral {
+    font-family: 'Segoe UI', sans-serif;
+    border: 1px solid rgb(245, 240, 230);
+    vertical-align: middle;
+    text-align: center;
+    background-color: rgb(232, 223, 245);
+    font-size: 44px;
+    padding: 50px;
+}
+
+.childPyp {
+    font-family: 'Segoe UI', sans-serif;
+    border: 1px solid rgb(245, 240, 230);
+    vertical-align: middle;
+    text-align: center;
+    background-color: rgb(231, 240, 250);
+    font-size: 44px;
+    padding: 50px;
+}
+
+.childMyp {
+    font-family: 'Segoe UI', sans-serif;
+    border: 1px solid rgb(245, 240, 230);
+    vertical-align: middle;
+    text-align: center;
+    background-color: rgb(216, 234, 242);
+    font-size: 44px;
+    padding: 50px;
+}
+
+.childBreak {
+    font-family: 'Segoe UI', sans-serif;
+    border: 1px solid rgb(245, 240, 230);
+    vertical-align: middle;
+    text-align: center;
+    background-color: rgb(255, 229, 216);
+    font-size: 44px;
+    padding: 50px;
+}
+
+.picture {
+    display: block;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.subheading {
+    font-family: 'Segoe UI', sans-serif;
+    padding: 10px;
+    margin: 10px;
+    vertical-align: middle;
+    text-align: left;
+    font-size: 32px;
+    color: rgb(115, 1, 34);
+}
+
+.heading {
+    background-color: rgb(0, 45, 114);
+    color: white;
+    font-size: 72px;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+footer {
+    background-color: #112549;
+    color: white;
+    padding: 20px 40px;
+}
+
+::-moz-selection {
+    /* Code for Firefox */
+    color: white;
+    background: #F3BA1A;
+}
+
+::selection {
+    color: white;
+    background: #F3BA1A;
+}

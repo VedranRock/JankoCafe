@@ -7,7 +7,7 @@ const drinks = [
     { name: "Ceđeni Sok čaša", price: 30 },
     { name: "Jogurt (šolja)", price: 40 },
     { name: "Bitter Lemon limenka", price: 50 },
-    { name: "Pivo limenka", price: 80 }
+    { name: "Pivo limenka", price: 80 },
 ];
 
 // Food
